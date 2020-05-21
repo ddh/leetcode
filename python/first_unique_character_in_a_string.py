@@ -22,8 +22,17 @@ class Solution:
           return index
       return -1
 
+import collections
+class Solution2:
+  def firstUniqChar(self, s: str) -> int:
+    letter_counts = defaultdict(lambda a: 0)
+    print(letter_counts)
+
+
+
+
 # Driver
-print(Solution().firstUniqChar("leetcode"))
-print(Solution().firstUniqChar("loveleetcode"))
-print(Solution().firstUniqChar(""))
-print(Solution().firstUniqChar("cc"))
+print(Solution2().firstUniqChar("leetcode"))
+print(Solution2().firstUniqChar("loveleetcode"))
+print(Solution2().firstUniqChar(""))
+print(Solution2().firstUniqChar("cc"))
