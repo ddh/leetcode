@@ -45,25 +45,20 @@ class Solution:
       queue = deque()
       queue.append(root)
 
+      level_values = []
       while queue:
-        level_values = []
         num_of_nodes_in_level = len(queue)
 
         for _ in range(num_of_nodes_in_level):
           node = queue.popleft()
           level_values.append(node.val)
-          if node.left:
-            queue.append(node.left)
           if node.right:
             queue.append(node.right)
+          if node.left:
+            queue.append(node.left)
 
-        # If we are unable to append any more nodes from this level,
-        # it must mean this layer is at most bottom leaf nodes
-        if not queue:
-          # We are the bottom, so return the left-most node's value
-          return level_values[0]
 
-      return -float('inf') # Nonsense return value
+      return level_values[-1] # Nonsense return value
 
 
 # Driver
