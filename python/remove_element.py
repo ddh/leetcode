@@ -50,22 +50,26 @@ class Solution:
       # Base case:
       if len(nums) == 1:
         if nums[0] != val:
+          print(nums)
           return 1
 
       tail_pointer = len(nums) - 1
       head_pointer = 0
-      while head_pointer < tail_pointer:
-        while nums[tail_pointer] == val:
+      while head_pointer <= tail_pointer:
+        while tail_pointer >= 0 and nums[tail_pointer] == val:
           tail_pointer -= 1
+        if tail_pointer < head_pointer:
+          break
         if nums[head_pointer] == val:
           nums[head_pointer], nums[tail_pointer] = nums[tail_pointer], nums[head_pointer]
         head_pointer += 1
 
-      # We didn't go anywhere, meaning all elements are the target
-      print(head_pointer)
+      # Another base case. If head_pointer never incremented, that means the tail_pointer kept
+      # encountering the target all the way through the array. There's no elements to swap, so
+      # we must empty the original array in place.
       if head_pointer == 0:
-        print("hello")
         del nums[:]
+
       return head_pointer
 
 
