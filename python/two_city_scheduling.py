@@ -37,5 +37,32 @@ class Solution:
       for cost in costs[midway_point:]: sum += cost[1]
       return sum
 
+# Redoing for June challenge; 6/3
+# Idea: Greedy approach; we're trying to optimize for the min cost.
+# What we can do is find the difference between each City-A, City-B pair.
+# The different of A-B will be in favor of city A if it comes out as negative,
+# which means it is more favorable to fly to A. We can do this for all of the
+# array pairs and then sort them.
+
+class Solution2:
+  def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+
+    # Sort costs by city A-B, smallest to highest
+    costs.sort(key=lambda cost: cost[0] - cost[1])
+
+    sum = 0
+
+    # Now that costs is sorted, take the first half and return the cost for visiting A
+    for i in range(len(costs)//2):
+      sum += costs[i][0]
+
+    # Now for the rest of the costs array, take City B costs
+    for i in range(len(costs)//2):
+      sum += costs[i + len(costs)//2][1]
+
+    return sum
+
+
 # Driver
 print(Solution().twoCitySchedCost([[10,20],[30,200],[400,50],[30,20]]))
+print(Solution2().twoCitySchedCost([[10,20],[30,200],[400,50],[30,20]])) # 110
