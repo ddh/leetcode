@@ -40,9 +40,11 @@ class Solution:
 
       if n % 2 == 1:
         uniq_nums.append(0)
+        
       for i in range(n//2):
         uniq_nums.append(i+1)
         uniq_nums.append(-(i+1))
+
       return uniq_nums
 
 # Driver:
