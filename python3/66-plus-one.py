@@ -78,6 +78,8 @@ class Solution:
       if carry:
         answerArray.append(1)
 
+    # return answerArray[::-1]
+
       # Now reverse the answer array to get the final answer
       answerArray.reverse()
       return answerArray
