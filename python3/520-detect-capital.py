@@ -52,13 +52,27 @@
 #
 
 # @lc code=start
+
+# Idea: First detect whether the first letter is capitalized or not.
+# Depending on the first letter, if not capitalized, we know the rest of the
+# word should be lowercased as well.
+# If first letter is capitalized, then scan the rest of the letters and ensure
+# the letter's case follows these rules:
+# 1. all letters must be lowercased
+# 2. Or all letters must be capitalized
+# To do these checks, we'll do an equality check against 'a'.
+# 1. letter < 'a' means it is capitalized
+# 2. letter >= 'a' means it is lower cased
+# *. We're assuming a-z,A-Z letters only, latin only
 class Solution:
     def detectCapitalUse(self, word: str) -> bool:
 
         # If < 'a', first letter is capitalized
         if word[0] < 'a':
+          # If letter is < 'a', it means it is capitalized
           if all([letter < 'a' for letter in word[1:]]):
             return True
+            # If letter is >= 'a', then it is lowercased
           if all([letter >= 'a' for letter in word[1:]]):
             return True
           return False
