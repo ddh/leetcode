@@ -63,7 +63,7 @@ class Solution:
         # This is O(nlogn) time complexity
         # This is the trick, to sort by the second number
         # since it has more influence over what you can pick?
-        pairs.sort(key=lambda pair: [pair[1]])
+        pairs.sort(key=lambda pair: pair[1])
 
         # Iterate through each pair, greedily adding to the answers array
         # We add a pair to the answer if the pair satisfies the rules where the first
